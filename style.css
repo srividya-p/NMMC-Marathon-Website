@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+  }
+  
+  .alert-warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+  }
+  
+  .close {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
+  }
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    opacity: .5;
+  }
+
+body:not(.navbar) {
+    display: block;
+    min-height: 100vh;
+    background: #5256ad;
+}
+
+.imagedisp {
+	display: block;
+	max-width: 100%
+}
+
+.navbar {
+    overflow: hidden;
+    display: block;
+    margin-top: 10px;
+}
+
+.navbar a, #title{
+    display: inline-block;
+    color: white;
+    font-size: 30px;
+    float: left;
+    text-align: center;
+    margin-right: 20px;
+    margin-left: 20px
+}
+
+.navbar label {
+    display: inline-block;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.navbar #username {
+    float: right;
+}
+
+.drag-area {
+    border: 2px dashed #fff;
+    height: 430px;
+    width: 600px;
+    margin-left:50px ;
+    margin-top: 30px;
+    vertical-align: centre;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.inputs {
+	border: none;
+      outline: none;
+      background: none;
+      font-family: "Poppins", sans-serif;
+	  position: absolute;
+  top: 90px;
+  right: 200px;
+  font-size: 18px;
+  color: white;
+}
+
+.inp {
+	width: 250px;
+	margin-top: 20px;
+	border-color: white;
+	outline: none;
+	border: none;
+    background: none;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    text-align: center;
+	font-size: 18px;
+	margin-left: 10px;
+	color: white;
+}
+
+.inp:hover {
+	border-bottom: 2px solid rgba(255, 255, 255, 1);
+}
+
+.drag-area.active {
+    border: 2px solid #fff;
+}
+
+.drag-area .icon {
+    font-size: 100px;
+    color: #fff;
+}
+
+.drag-area header {
+    font-size: 30px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.drag-area span {
+    font-size: 25px;
+    font-weight: 500;
+    color: #fff;
+    margin: 10px 0 15px 0;
+}
+
+.drag-area button {
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    background: #fff;
+    color: #5256ad;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.drag-area img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+#convert_button {
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    background: #fff;
+    color: #5256ad;
+    border-radius: 5px;
+    cursor: pointer;
+    right: 90px;
+    top: 320px;
+    display: none;
+    position: absolute
+}
+
+#convert_button:hover {
+	background:#e8e8e8;
+}
+
+.drag-area button:hover {
+	background:#e8e8e8;
+}
+
+.sliders {
+	font-family: "Poppins", sans-serif;
+	position: absolute;
+	top: 210px;
+  right: 320px;
+  font-size: 15px;
+  color: white;
+  display:none;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 200%;
+  height: 15px;
+  background: linear-gradient(to right, #04AA6D 0%, #04AA6D 0%, #fff 0%, #fff 100%);
+  border-radius: 5px;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  margin-bottom: 10px;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius:5px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
