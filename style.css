@@ -81,8 +81,8 @@ body:not(.navbar) {
 .drag-area {
     border: 2px dashed #fff;
     height: 430px;
-    width: 600px;
-    margin-left:50px ;
+    width: 770px;
+    margin-left:50px;
     margin-top: 30px;
     vertical-align: centre;
     border-radius: 5px;
@@ -91,6 +91,7 @@ body:not(.navbar) {
     justify-content: center;
     flex-direction: column;
 }
+
 
 .inputs {
 	border: none;
@@ -129,6 +130,7 @@ body:not(.navbar) {
 .drag-area .icon {
     font-size: 100px;
     color: #fff;
+    margin-top: 90px;
 }
 
 .drag-area header {
@@ -154,6 +156,7 @@ body:not(.navbar) {
     color: #5256ad;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom:90px;
 }
 
 .drag-area img {

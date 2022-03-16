@@ -9,15 +9,29 @@ let file; //this is a global variable and we'll use it inside multiple functions
 let image;
 let cropper;
 
+let c;
+
+zoomfunc = () => {
+  zoomrange = document.getElementById("zoom");
+  var value = (zoomrange.value-zoomrange.min)/(zoomrange.max-zoomrange.min)*100;
+  zoomrange.style.background = 'linear-gradient(to right, #04AA6D 0%, #04AA6D ' + value + '%, #fff ' + value + '%, white 100%)';
+  const containerData = cropper.getContainerData();
+  cropper.zoomTo(zoomrange.value, {
+    x: containerData.width / 2,
+    y: containerData.height / 2,
+  });
+  cropper.setCropBoxData(c);
+}
+
 document.getElementById("zoom").oninput = function() {
-  var value = (this.value-this.min)/(this.max-this.min)*100
-  this.style.background = 'linear-gradient(to right, #04AA6D 0%, #04AA6D ' + value + '%, #fff ' + value + '%, white 100%)'
-  cropper.zoomTo(this.value);
+  zoomfunc();
 };
 
 document.getElementById("rotation").oninput = function() {
-  var value = (this.value-this.min)/(this.max-this.min)*100
-  this.style.background = 'linear-gradient(to right, #04AA6D 0%, #04AA6D ' + value + '%, #fff ' + value + '%, white 100%)'
+  var value = (this.value-this.min)/(this.max-this.min)*100;
+  this.style.background = 'linear-gradient(to right, #04AA6D 0%, #04AA6D ' + value + '%, #fff ' + value + '%, white 100%)';
+  cropper.rotateTo(this.value);
+  c = cropper.getCropBoxData();
 };
 
 button.onclick = () => {
@@ -65,11 +79,21 @@ function showFile() {
             dropArea.innerHTML = imgTag; //adding that created img tag inside dropArea container
 			image = document.getElementById("imagedisp");
 			cropper = new Cropper(image, {
-  aspectRatio: 16 / 9,
+  aspectRatio: 4/3,
   viewMode: 1,
         dragMode: 'move',
         cropBoxMovable: false,
+        movable: true,
+        canvasMovable: false,
         cropBoxResizable: false,
+        checkOrientation: false,
+        autoCropArea:1,
+        zoomable:true,
+        rotatable:true,
+        background: false,
+        center: true,
+        guides: true,
+        highlight:true,
   crop(event) {
     console.log(event.detail.x);
     console.log(event.detail.y);
@@ -79,7 +103,44 @@ function showFile() {
     console.log(event.detail.scaleX);
     console.log(event.detail.scaleY);
   },
+
+  rotate(event) {
+    console.log(event.detail.x);
+    console.log(event.detail.y);
+  },
+  zoom: function(event) {
+    console.log(event.detail.originalEvent);
+  if(event.detail.originalEvent.type=="wheel") {
+    zoomrange = document.getElementById("zoom");
+    if(event.detail.originalEvent.deltaY<0) {
+      val = parseFloat(zoomrange.value);
+      if((val<zoomrange.getAttribute("max")) && (val>=zoomrange.getAttribute("min")) )
+      zoomrange.setAttribute('value',val+0.1);
+    }
+    else{
+      val = parseFloat(zoomrange.value);
+      if(val>zoomrange.getAttribute("min"))
+      zoomrange.setAttribute('value',val-0.1);
+    }
+    zoomfunc();
+    event.preventDefault();
+  }
+  }
 });
+
+image.addEventListener('ready', function () {
+  //console.log(this.cropper === cropper);
+  c = cropper.getCropBoxData(); 
+  console.log(c); 
+  imgdata = cropper.getImageData();
+  ratio = imgdata.height / imgdata.naturalHeight;
+  minratio = ratio.toFixed(1);
+  maxratio = (ratio+1).toFixed(1);
+  document.getElementById("zoom").setAttribute("min",minratio);
+  document.getElementById("zoom").setAttribute("value",minratio);
+  document.getElementById("zoom").setAttribute("max",maxratio);
+});
+
         }
         fileReader.readAsDataURL(file);
 
